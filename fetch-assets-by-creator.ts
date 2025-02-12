@@ -14,6 +14,16 @@ const owner = publicKey(user.publicKey);
 
 //const assets = await umi.rpc.getAssets([owner, publicKey("D22UCf6mu8BCgBCbRbsEEYgSxMEbvSKw3vcdDWvcJ72Z")]);
 
-const assetss = await umi.rpc.getAssetsByOwner({owner: publicKey("4kg8oh3jdNtn7j2wcS7TrUua31AgbLzDVkBZgTAe44aF")})
+const assets = await umi.rpc.getAssetsByOwner({owner: publicKey("2SNBdEXUv3uuHyxgUtmbwFci2oWc4SxfUfmKkMVtTECh")})
 
-console.log(assetss);
+console.log(assets.items.filter((e) => {
+    let creator:boolean = false;
+    e.creators.forEach((c) => {
+        if(c.address === "4iFaA43w9bJjMfS4Cenh7mfDn8uwDBtLaPem2V9gJdmH"){
+            creator = true;
+        }
+        else
+            creator = false;;
+    })
+    return creator;
+}));
